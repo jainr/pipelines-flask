@@ -47,7 +47,7 @@ steps:
 - task: Docker@1
   displayName: 'Build an image'
   inputs:
-    azureSubscriptionEndpoint: '$(service_connection)'
+    azureSubscriptionEndpoint: $(serviceconnection)
     azureContainerRegistry: helloflaskappacr.azurecr.io
     imageName: 'helloflaskapp:$(Build.BuildId)'
     useDefaultContext: false
