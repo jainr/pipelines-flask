@@ -12,9 +12,9 @@ steps:
 
 - task: AzureResourceGroupDeployment@2
   inputs:
-    ConnectedServiceName: '$(service_connection)'
+    ConnectedServiceName: $(service_connection)
     action: 'Create Or Update Resource Group'
-    resourceGroupName: '$(resource_group)'
+    resourceGroupName: $(resource_group)
     location: 'East US'
     csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
     csmParametersFile: '-registryName "helloflaskappacr" -registryLocation "South Central US" -registrySku "Standard"'
