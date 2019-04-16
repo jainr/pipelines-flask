@@ -1,0 +1,369 @@
+{
+    "source": 8,
+    "revision": 1,
+    "description": null,
+    "createdBy": {
+        "displayName": "User Name",
+        "url": "https://app.vssps.visualstudio.com/A50252ebb-b69f-4b3d-baf6-04ea3ac8f8de/_apis/Identities/af1dae6a-5d55-49bb-a1a1-8e5db902dc1c",
+        "_links": {
+            "avatar": {
+                "href": "https://dev.azure.com/devopsorg/_apis/GraphProfile/MemberAvatars/aad.ZmZhYjg5YzEtYmIxNC03NGRiLTk3NTAtZDBlMzQ2NGQwNjU0"
+            }
+        },
+        "id": "af1dae6a-5d55-49bb-a1a1-8e5db902dc1c",
+        "uniqueName": "user@email.com",
+        "imageUrl": "https://dev.azure.com/devopsorg/_apis/GraphProfile/MemberAvatars/aad.ZmZhYjg5YzEtYmIxNC03NGRiLTk3NTAtZDBlMzQ2NGQwNjU0",
+        "descriptor": "aad.ZmZhYjg5YzEtYmIxNC03NGRiLTk3NTAtZDBlMzQ2NGQwNjU0"
+    },
+    "createdOn": "2019-04-05T14:53:12.507Z",
+    "modifiedBy": {
+        "displayName": "User Name",
+        "url": "https://app.vssps.visualstudio.com/A50252ebb-b69f-4b3d-baf6-04ea3ac8f8de/_apis/Identities/af1dae6a-5d55-49bb-a1a1-8e5db902dc1c",
+        "_links": {
+            "avatar": {
+                "href": "https://dev.azure.com/devopsorg/_apis/GraphProfile/MemberAvatars/aad.ZmZhYjg5YzEtYmIxNC03NGRiLTk3NTAtZDBlMzQ2NGQwNjU0"
+            }
+        },
+        "id": "af1dae6a-5d55-49bb-a1a1-8e5db902dc1c",
+        "uniqueName": "user@email.com",
+        "imageUrl": "https://dev.azure.com/devopsorg/_apis/GraphProfile/MemberAvatars/aad.ZmZhYjg5YzEtYmIxNC03NGRiLTk3NTAtZDBlMzQ2NGQwNjU0",
+        "descriptor": "aad.ZmZhYjg5YzEtYmIxNC03NGRiLTk3NTAtZDBlMzQ2NGQwNjU0"
+    },
+    "modifiedOn": "2019-04-05T14:53:12.507Z",
+    "isDeleted": false,
+    "variables": {},
+    "variableGroups": [],
+    "environments": [
+        {
+            "id": 1,
+            "name": "dev",
+            "rank": 1,
+            "owner": {
+                "displayName": "User Name",
+                "url": "https://app.vssps.visualstudio.com/A50252ebb-b69f-4b3d-baf6-04ea3ac8f8de/_apis/Identities/af1dae6a-5d55-49bb-a1a1-8e5db902dc1c",
+                "_links": {
+                    "avatar": {
+                        "href": "https://dev.azure.com/devopsorg/_apis/GraphProfile/MemberAvatars/aad.ZmZhYjg5YzEtYmIxNC03NGRiLTk3NTAtZDBlMzQ2NGQwNjU0"
+                    }
+                },
+                "id": "af1dae6a-5d55-49bb-a1a1-8e5db902dc1c",
+                "uniqueName": "user@email.com",
+                "imageUrl": "https://dev.azure.com/devopsorg/_apis/GraphProfile/MemberAvatars/aad.ZmZhYjg5YzEtYmIxNC03NGRiLTk3NTAtZDBlMzQ2NGQwNjU0",
+                "descriptor": "aad.ZmZhYjg5YzEtYmIxNC03NGRiLTk3NTAtZDBlMzQ2NGQwNjU0"
+            },
+            "variables": {},
+            "variableGroups": [],
+            "preDeployApprovals": {
+                "approvals": [
+                    {
+                        "rank": 1,
+                        "isAutomated": true,
+                        "isNotificationOn": false,
+                        "id": 1
+                    }
+                ]
+            },
+            "deployStep": {
+                "id": 2
+            },
+            "postDeployApprovals": {
+                "approvals": [
+                    {
+                        "rank": 1,
+                        "isAutomated": true,
+                        "isNotificationOn": false,
+                        "id": 3
+                    }
+                ]
+            },
+            "deployPhases": [
+                {
+                    "deploymentInput": {
+                        "parallelExecution": {
+                            "parallelExecutionType": 0
+                        },
+                        "skipArtifactsDownload": false,
+                        "artifactsDownloadInput": {
+                            "downloadInputs": []
+                        },
+                        "queueId": 27,
+                        "demands": [],
+                        "enableAccessToken": false,
+                        "timeoutInMinutes": 0,
+                        "jobCancelTimeoutInMinutes": 1,
+                        "condition": "succeeded()",
+                        "overrideInputs": {}
+                    },
+                    "rank": 1,
+                    "phaseType": 1,
+                    "name": "Agent phase",
+                    "refName": null,
+                    "workflowTasks": [
+                        {
+                            "environment": {},
+                            "taskId": "94a74903-f93f-4075-884f-dc11f34058b4",
+                            "version": "2.*",
+                            "name": "Azure Deployment:Create Azure App Service",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "inputs": {
+                                "ConnectedServiceName": "22f5ffff-65df-408e-81ac-30a4c218ccfd",
+                                "action": "Create Or Update Resource Group",
+                                "resourceGroupName": "helloflaskapp-rg",
+                                "location": "South Central US",
+                                "templateLocation": "Linked artifact",
+                                "csmFileLink": "",
+                                "csmParametersFileLink": "",
+                                "csmFile": "$(System.DefaultWorkingDirectory)/**/container-webapp-template.json",
+                                "csmParametersFile": "",
+                                "overrideParameters": "-webAppName helloflaskapp -hostingPlanName helloflaskapp-plan -appInsightsLocation \"South Central US\" -sku \"S1 Standard\" -registryName \"helloflaskappacr\" -registryLocation \"South Central US\" -registrySku \"Standard\" -imageName helloflaskapp:$(Build.BuildId)",
+                                "deploymentMode": "Incremental",
+                                "enableDeploymentPrerequisites": "None",
+                                "deploymentGroupEndpoint": "",
+                                "project": "",
+                                "deploymentGroupName": "",
+                                "copyAzureVMTags": "true",
+                                "runAgentServiceAsUser": "false",
+                                "userName": "",
+                                "password": "",
+                                "outputVariable": "",
+                                "deploymentOutputs": ""
+                            }
+                        },
+                        {
+                            "environment": {},
+                            "taskId": "497d490f-eea7-4f2b-ab94-48d9c1acdcb1",
+                            "version": "3.*",
+                            "name": "Deploy Azure App Service",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": null,
+                            "overrideInputs": {},
+                            "inputs": {
+                                "ConnectedServiceName": "22f5ffff-65df-408e-81ac-30a4c218ccfd",
+                                "WebAppName": "helloflaskapp",
+                                "WebAppKind": "applinux",
+                                "DeployToSlotFlag": "false",
+                                "ResourceGroupName": "helloflaskapp-rg",
+                                "SlotName": "",
+                                "DockerNamespace": "helloflaskappacr.azurecr.io",
+                                "DockerRepository": "helloflaskapp",
+                                "DockerImageTag": "$(Build.BuildId)",
+                                "StartupCommand": "",
+                                "VirtualApplication": "",
+                                "Package": "$(System.DefaultWorkingDirectory)\\**\\*.zip",
+                                "WebAppUri": "webAppUrl",
+                                "ScriptType": "",
+                                "InlineScript": "",
+                                "ScriptPath": "",
+                                "TakeAppOfflineFlag": "true",
+                                "UseWebDeploy": "true",
+                                "SetParametersFile": "",
+                                "RemoveAdditionalFilesFlag": "false",
+                                "ExcludeFilesFromAppDataFlag": "false",
+                                "AdditionalArguments": "",
+                                "RenameFilesFlag": "true",
+                                "GenerateWebConfig": "false",
+                                "WebConfigParameters": "",
+                                "XmlTransformation": "false",
+                                "XmlVariableSubstitution": "false",
+                                "JSONFiles": "",
+                                "AppSettings": "",
+                                "ImageSource": "Registry",
+                                "RuntimeStack": "",
+                                "BuiltinLinuxPackage": "$(System.DefaultWorkingDirectory)/**/*.zip"
+                            }
+                        },
+                        {
+                            "environment": {},
+                            "taskId": "5e1e3830-fbfb-11e5-aab1-090c92bc4988",
+                            "version": "1.*",
+                            "name": "Extract tests",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": null,
+                            "overrideInputs": {},
+                            "inputs": {
+                                "archiveFilePatterns": "Tests*.zip",
+                                "destinationFolder": "$(System.DefaultWorkingDirectory)/Tests",
+                                "cleanDestinationFolder": "true"
+                            }
+                        },
+                        {
+                            "environment": {},
+                            "taskId": "33c63b11-352b-45a2-ba1b-54cb568a29ca",
+                            "version": "0.*",
+                            "name": "Use Python 2.x",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "inputs": {
+                                "versionSpec": "2.x",
+                                "addToPath": "true",
+                                "architecture": "x64"
+                            }
+                        },
+                        {
+                            "environment": {},
+                            "taskId": "d9bafed4-0b18-4f58-968d-86655b4d2ce9",
+                            "version": "2.*",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": null,
+                            "overrideInputs": {},
+                            "inputs": {
+                                "script": "pip install selenium && pip install pytest && pytest Tests/functional_tests/ --webAppUrl=$(webAppUrl) --junitxml=TestResults/test-results.xml",
+                                "workingDirectory": "",
+                                "failOnStderr": "false"
+                            }
+                        },
+                        {
+                            "environment": {},
+                            "taskId": "0b0f01ed-7dde-43ff-9cbb-e48954daf9b1",
+                            "version": "2.*",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "definitionType": null,
+                            "overrideInputs": {},
+                            "inputs": {
+                                "testRunner": "JUnit",
+                                "testResultsFiles": "**/test-*.xml",
+                                "mergeTestResults": "false",
+                                "testRunTitle": "",
+                                "platform": "",
+                                "configuration": "",
+                                "publishRunAttachments": "true"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "environmentOptions": {
+                "emailNotificationType": "OnlyOnFailure",
+                "emailRecipients": "release.environment.owner;release.creator",
+                "skipArtifactsDownload": false,
+                "timeoutInMinutes": 0,
+                "enableAccessToken": false,
+                "publishDeploymentStatus": false,
+                "badgeEnabled": false,
+                "autoLinkWorkItems": false,
+                "pullRequestDeploymentEnabled": false
+            },
+            "demands": [],
+            "conditions": [
+                {
+                    "name": "ReleaseStarted",
+                    "conditionType": 1,
+                    "value": ""
+                }
+            ],
+            "executionPolicy": {
+                "concurrencyCount": 0,
+                "queueDepthCount": 0
+            },
+            "schedules": [],
+            "currentRelease": {
+                "id": 1,
+                "url": "https://vsrm.dev.azure.com/devopsorg/9d42e6f6-15df-40fd-a553-4f9ed05d9ad0/_apis/Release/releases/1",
+                "_links": {}
+            },
+            "retentionPolicy": {
+                "daysToKeep": 30,
+                "releasesToKeep": 3,
+                "retainBuild": true
+            },
+            "properties": {},
+            "preDeploymentGates": {
+                "id": 0,
+                "gatesOptions": null,
+                "gates": []
+            },
+            "postDeploymentGates": {
+                "id": 0,
+                "gatesOptions": null,
+                "gates": []
+            },
+            "environmentTriggers": [],
+            "badgeUrl": "https://vsrm.dev.azure.com/devopsorg/_apis/public/Release/badge/9d42e6f6-15df-40fd-a553-4f9ed05d9ad0/1/1"
+        }
+    ],
+    "artifacts": [
+        {
+            "sourceId": "9d42e6f6-15df-40fd-a553-4f9ed05d9ad0:3",
+            "type": "Build",
+            "alias": "Drop",
+            "definitionReference": {
+                "defaultVersionType": {
+                    "id": "latestType",
+                    "name": "Latest"
+                },
+                "definition": {
+                    "id": "3",
+                    "name": "3"
+                },
+                "project": {
+                    "id": "9d42e6f6-15df-40fd-a553-4f9ed05d9ad0",
+                    "name": "sampleflaskapp"
+                },
+                "artifactSourceDefinitionUrl": {
+                    "id": "https://dev.azure.com/devopsorg/_permalink/_build/index?collectionId=e05b8862-730b-48a7-8ca1-c9a1376d23ad&projectId=9d42e6f6-15df-40fd-a553-4f9ed05d9ad0&definitionId=3",
+                    "name": ""
+                }
+            },
+            "isPrimary": true,
+            "isRetained": false
+        }
+    ],
+    "triggers": [
+        {
+            "artifactAlias": "Drop",
+            "triggerConditions": [],
+            "triggerType": 1
+        }
+    ],
+    "releaseNameFormat": "Release-$(rev:r)",
+    "tags": [],
+    "pipelineProcess": {
+        "type": 1
+    },
+    "properties": {
+        "DefinitionCreationSource": {
+            "$type": "System.String",
+            "$value": "PortalExtension "
+        }
+    },
+    "id": 1,
+    "name": "helloflaskapp - CD",
+    "path": "\\",
+    "projectReference": null,
+    "url": "https://vsrm.dev.azure.com/devopsorg/9d42e6f6-15df-40fd-a553-4f9ed05d9ad0/_apis/Release/definitions/1",
+    "_links": {
+        "self": {
+            "href": "https://vsrm.dev.azure.com/devopsorg/9d42e6f6-15df-40fd-a553-4f9ed05d9ad0/_apis/Release/definitions/1"
+        },
+        "web": {
+            "href": "https://dev.azure.com/devopsorg/9d42e6f6-15df-40fd-a553-4f9ed05d9ad0/_release?definitionId=1"
+        }
+    }
+}
