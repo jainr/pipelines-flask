@@ -1,0 +1,62 @@
+pool:
+  name: Hosted Ubuntu 1604
+steps:
+- task: AzureResourceGroupDeployment@2
+  displayName: 'Azure Deployment:Create Azure Container Registry'
+  inputs:
+    azureSubscription: 'helloflaskapp - Service Endpoint'
+    resourceGroupName: 'helloflaskapp-rg'
+    location: 'South Central US'
+    csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
+    overrideParameters: '-registryName "helloflaskappacr" -registryLocation "South Central US" -registrySku "Standard"'
+
+- task: UsePythonVersion@0
+  displayName: 'Use Python 2.x'
+  inputs:
+    versionSpec: 2.x
+
+- script: 'pip install -r Application/requirements.txt'
+  displayName: 'Install Dependencies'
+
+- script: 'pip install pytest && pytest Tests/unit_tests --junitxml=../TestResults/test-results.xml && pip install pycmd && py.cleanup Tests/'
+  displayName: Pytest
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results **/test-*.xml'
+  inputs:
+    testResultsFiles: '**/test-*.xml'
+    searchFolder: '$(Common.TestResultsDirectory)'
+
+- task: ArchiveFiles@1
+  displayName: 'Archive tests'
+  inputs:
+    rootFolder: '$(System.DefaultWorkingDirectory)/Tests'
+    includeRootFolder: false
+    archiveType: zip
+    archiveFile: '$(Build.ArtifactStagingDirectory)/Tests$(Build.BuildId).zip'
+
+- task: Docker@1
+  displayName: 'Build an image'
+  inputs:
+    azureSubscriptionEndpoint: 'helloflaskapp - Service Endpoint'
+    azureContainerRegistry: helloflaskappacr.azurecr.io
+    imageName: 'helloflaskapp:$(Build.BuildId)'
+    useDefaultContext: false
+    buildContext: '$(System.DefaultWorkingDirectory)/Application'
+
+- task: Docker@1
+  displayName: 'Push an image'
+  inputs:
+    azureSubscriptionEndpoint: 'helloflaskapp - Service Endpoint'
+    azureContainerRegistry: '{"loginServer":"helloflaskappacr.azurecr.io", "id" : "/subscriptions/0ca618d2-22a8-413a-96d0-0f1b531129c3/resourceGroups/helloflaskapp-rg/providers/Microsoft.ContainerRegistry/registries/helloflaskappacr"}'
+    command: 'Push an image'
+    imageName: 'helloflaskapp:$(Build.BuildId)'
+
+- task: CopyFiles@2
+  displayName: 'Copy ARM templates'
+  inputs:
+    SourceFolder: ArmTemplates
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
