@@ -56,10 +56,12 @@ steps:
 - task: Docker@1
   displayName: 'Push an image'
   inputs:
-    azureSubscriptionEndpoint: 'helloflaskapp - Service Endpoint'
-    azureContainerRegistry: '{"loginServer":"helloflaskappacr.azurecr.io", "id" : "/subscriptions/0ca618d2-22a8-413a-96d0-0f1b531129c3/resourceGroups/helloflaskapp-rg/providers/Microsoft.ContainerRegistry/registries/helloflaskappacr"}'
+    azureSubscriptionEndpoint: $(serviceconnection)
+    azureContainerRegistry: '{"loginServer":"helloflaskappacr.azurecr.io", "id" : "/subscriptions/$(subscriptionid)/resourceGroups/helloflaskapp-rg/providers/Microsoft.ContainerRegistry/registries/helloflaskappacr"}'
     command: 'Push an image'
     imageName: 'helloflaskapp:$(Build.BuildId)'
+
+
 
 - task: CopyFiles@2
   displayName: 'Copy ARM templates'
