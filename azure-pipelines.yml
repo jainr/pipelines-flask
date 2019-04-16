@@ -1,16 +1,23 @@
 pool:
   name: Hosted Ubuntu 1604
 steps:
+# - task: AzureResourceGroupDeployment@2
+#   displayName: 'Azure Deployment:Create Azure Container Registry'
+#   inputs:
+#     azureSubscription: '$(service_connection)'
+#     resourceGroupName: 'helloflaskapp-rg'
+#     location: 'South Central US'
+#     csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
+#     overrideParameters: '-registryName "helloflaskappacr" -registryLocation "South Central US" -registrySku "Standard"'
+
 - task: AzureResourceGroupDeployment@2
-  displayName: 'Azure Deployment:Create Azure Container Registry'
   inputs:
-    azureSubscription: '$(service_connection)'
-    resourceGroupName: 'helloflaskapp-rg'
-    location: 'South Central US'
+    ConnectedServiceName: '$(service_connection)'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '$(resource_group)'
+    location: 'East US'
     csmFile: '$(System.DefaultWorkingDirectory)/**/containerRegistry-template.json'
-    overrideParameters: '-registryName "helloflaskappacr" -registryLocation "South Central US" -registrySku "Standard"'
-
-
+    csmParametersFile: '-registryName "helloflaskappacr" -registryLocation "South Central US" -registrySku "Standard"'
 
 - task: UsePythonVersion@0
   displayName: 'Use Python 2.x'
